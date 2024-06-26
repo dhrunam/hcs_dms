@@ -161,6 +161,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DATABASE_ROUTERS = ['dms_backend.routers.AuthRouter',
                     'dms_backend.routers.CrsRouter']
+BASE_URLOF_FILE = 'https://hcs.gov.in/hcs/hg_judgements/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

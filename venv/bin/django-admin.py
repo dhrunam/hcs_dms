@@ -1,4 +1,4 @@
-#!/Users/dhrubajyotiborah/Documents/Projects/hcs_dms/venv/bin/python3
+#!/Users/nareshsharma/Documents/Projects/hcs_dms/venv/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

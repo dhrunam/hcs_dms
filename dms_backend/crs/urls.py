@@ -8,6 +8,7 @@ from crs.views import (
     ExtraAdvocateList,
     JudgeNameTList,
     QRCodeDownloadView,
+    TestQRCodeDownloadView,
 )
 
 urlpatterns = [
@@ -17,5 +18,6 @@ urlpatterns = [
     path('api/cis/civil_t', CivilTList.as_view()),
     path('api/cis/judges', JudgeNameTList().as_view()),
     path('api/cis/qrcode/download', QRCodeDownloadView.as_view()),
+    path('api/cis/qrcode/test/download', TestQRCodeDownloadView.as_view()),
     # path('api/cis/civil_t/<pk:id>', CivilTDetails.as_view()),
 ]
