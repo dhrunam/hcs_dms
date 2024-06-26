@@ -1,0 +1,66 @@
+<div class="vh-100 m-3">
+    <h3 class="header">Barcode Generator</h3>
+
+    <div class="container">
+        <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="caseType">Case Type</label>
+                        <select  class="form-select" id="caseType" name="caseType" ngModel>
+                            <option value="" disabled selected>--Select Case Type--</option>
+                            <option  [ngValue]='c.caseTypeId' *ngFor="let c of caseTypeData"> {{c.caseTypeName}}</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="form-label" for="caseType">Case Type</label>
+                        <select  class="form-select" id="caseType" name="caseType" ngModel>
+                            <option value="" disabled selected>--Select Case Type--</option>
+                            <option  [value]='c.caseTypeId' *ngFor="let c of caseTypeData"> {{c.caseTypeName}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Case Number</label>
+                        <input type="text" required minLength="1" maxLength="3" pattern="\d{1,3}" ngModel name="case_number" class="form-control" >
+                        <!-- <small class="text-danger" *ngIf="case_number.touched && case_number.invalid">Please enter a valid case number</small> -->
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="form-label">Year</label>
+                        <select class="form-select" name="caseType" #year required>
+                            <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
+                        </select>
+                    </div> -->
+
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </div>
+                <div class="col-2"></div>
+
+            </div>
+
+            <!-- <div class="row mt-4 center">
+             <div class="col-12 text-center"  *ngIf="isLoading">
+                 <table class="table">
+                     <thead>
+                         <tr>
+                             <th>Username</th>
+                             <th>Gender</th>
+                             <th>Password</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td>{{userDetails.username}}</td>
+                             <td>{{userDetails.gender}}</td>
+                             <td>{{userDetails.password}}</td>
+                         </tr>
+                     </tbody>
+                 </table>
+             </div>
+         </div> -->
+        </form>
+    </div>
+</div>
