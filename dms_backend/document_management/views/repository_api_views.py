@@ -11,7 +11,7 @@ from django.core.signals import (
     request_started
 )
 from django.contrib.postgres.search import SearchQuery
-from django.contrib.postgres.search import TrigramWordSimilarity
+# from django.contrib.postgres.search import TrigramWordSimilarity
 
 
 from django.dispatch import receiver
