@@ -1,10 +1,45 @@
 
-from rest_framework import generics
+from rest_framework import generics, views
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User, Group
 
 from crs import serializers, models
 from durin.auth import TokenAuthentication
+
+from rest_framework.decorators import api_view
+from rest_framework import status
+from django.http import HttpResponse
+
+
+import qrcode
+from io import BytesIO
+
+
+
+def generate_qrcode(data: str):
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill='black', back_color='white')
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    buffer.seek(0)
+    return buffer
+
+
+class QRCodeDownloadView(views.APIView):
+    def get(self, request, *args, **kwargs):
+        data = request.query_params.get('data', 'default data')
+        qr_code_buffer = generate_qrcode(data)
+        response = HttpResponse(qr_code_buffer, content_type="image/png")
+        response['Content-Disposition'] = f'attachment; filename="qrcode.png"'
+        return response
 
 
 # Create your views here.
@@ -14,7 +49,7 @@ class CaseTypeList(generics.ListCreateAPIView):
 
     def post(self, request, *args, **kwargs):
         # Not allowing insert for time being
-        return queryset
+        return self.queryset
 
 
 class CaseTypeDetails(generics.RetrieveUpdateDestroyAPIView):
@@ -28,7 +63,7 @@ class ExtraPartyList(generics.ListCreateAPIView):
 
     def post(self, request, *args, **kwargs):
         # Not allowing insert for time being
-        return queryset
+        pass
 
     def get_queryset(self):
         """
@@ -53,7 +88,7 @@ class ExtraAdvocateList(generics.ListCreateAPIView):
 
     def post(self, request, *args, **kwargs):
         # Not allowing insert for time being
-        return queryset
+        pass
 
     def get_queryset(self):
         """
@@ -78,7 +113,7 @@ class CivilTList(generics.ListCreateAPIView):
     # Not allowing insert for time being
 
     def post(self, request, *args, **kwargs):
-        return queryset
+        pass
 
     def get_queryset(self):
         """
