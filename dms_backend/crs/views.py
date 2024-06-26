@@ -184,12 +184,13 @@ class QRCodeDownloadView(generics.ListAPIView):
             if queryset:
                 max_numbers = models.OrderDetailsA.objects.values('case_no').annotate(max_order_no=Max('order_no')).filter(case_no=queryset.case_no).last()
                 max_number = max_numbers['max_order_no']+1
-                file_url = settings.BASE_URLOF_FILE + str(max_numbers['case_no']) +"_"+str(max_number)+".pdf"
+                file_name_part=str(max_numbers['case_no']) +"_"+str(max_number)
+                file_url = settings.BASE_URLOF_FILE + file_name_part+".pdf"
                 print("URL:",file_url)
                
                 qr_code_buffer = generate_qrcode(file_url)
                 response = HttpResponse(qr_code_buffer, content_type="image/png")
-                response['Content-Disposition'] = f'attachment; filename="qrcode.png"'
+                response['Content-Disposition'] = f'attachment; filename="'+file_name_part+'.png"'
                 return response
             else:
                 return response.Response({"Data":[]}, status=status.HTTP_200_OK)
