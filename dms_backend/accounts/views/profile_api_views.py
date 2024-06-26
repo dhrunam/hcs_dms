@@ -10,7 +10,7 @@ from durin.auth import TokenAuthentication
 class RegisteredUserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.ResgisteredUserSerializer
-
+    
 
 class RegisteredUserDetails(generics.RetrieveUpdateAPIView):
     queryset = User

@@ -72,13 +72,13 @@ class ExtraAdvocateList(generics.ListCreateAPIView):
         return queryset.order_by('case_no')
 
 
-class CivilTList(generics.ListCreateAPIView):
+class CivilTList(generics.ListAPIView):
     queryset = models.CivilTA.objects.all().order_by('case_no')
     serializer_class = serializers.CivilTSerializer
     # Not allowing insert for time being
 
-    def post(self, request, *args, **kwargs):
-        return queryset
+    # def post(self, request, *args, **kwargs):
+    #     return queryset
 
     def get_queryset(self):
         """
@@ -92,7 +92,6 @@ class CivilTList(generics.ListCreateAPIView):
         case_year = self.request.query_params.get('case_year')
         if case_type and case_no and case_year:
             print('Test...')
-
             queryset = queryset.filter(
                 reg_no=case_no).filter(regcase_type=case_type).filter(reg_year=case_year)
 
