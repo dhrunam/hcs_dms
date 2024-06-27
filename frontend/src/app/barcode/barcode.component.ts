@@ -4,7 +4,7 @@ import { CaseType, CaseTypeResponse } from '../models/CaseType';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
-
+import { baseUrl } from "../../environment/environment";
 
 @Component({
   selector: 'app-barcode',
@@ -42,7 +42,9 @@ export class BarcodeComponent implements OnInit {
     console.log('Here');
 
     if (!data.invalid) {
-      this.barcodeService.downloadBarcode(data.value.caseType, data.value.caseNumber, data.value.caseYear);
+      const url = `${baseUrl}/api/cis/qrcode/download?case_type=${data.value.caseType}&case_no=${data.value.caseNumber}&case_year=${data.value.caseYear}`;
+
+      window.open(url, '')
     }
     else{
       console.log('Data is invalid');

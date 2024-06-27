@@ -1,5 +1,5 @@
 
-from rest_framework import generics, views, response, status
+from rest_framework import generics, views,response, status
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User, Group
 
@@ -180,7 +180,8 @@ class QRCodeDownloadView(generics.ListAPIView):
             print('Test...')
             queryset = queryset.filter(
                 reg_no=case_no).filter(regcase_type=case_type).filter(reg_year=case_year).last()
-            
+            print(queryset);
+            print(str(case_type));
             if queryset:
                 max_numbers = models.OrderDetailsA.objects.values('case_no').annotate(max_order_no=Max('order_no')).filter(case_no=queryset.case_no).last()
                 max_number = max_numbers['max_order_no']+1
@@ -189,9 +190,9 @@ class QRCodeDownloadView(generics.ListAPIView):
                 print("URL:",file_url)
                
                 qr_code_buffer = generate_qrcode(file_url)
-                response = HttpResponse(qr_code_buffer, content_type="image/png")
-                response['Content-Disposition'] = f'attachment; filename="'+file_name_part+'.png"'
-                return response
+                responses = HttpResponse(qr_code_buffer, content_type="image/png")
+                responses['Content-Disposition'] = f'attachment; filename="'+file_name_part+'.png"'
+                return responses
             else:
                 return response.Response({"Data":[]}, status=status.HTTP_200_OK)
         return response.Response({"Data":[]}, status=status.HTTP_200_OK)
