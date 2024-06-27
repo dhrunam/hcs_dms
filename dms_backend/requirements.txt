@@ -1,20 +1,20 @@
-# altgraph @ file:///System/Volumes/Data/SWE/Apps/DT/BuildRoots/BuildRoot7/ActiveBuildRoot/Library/Caches/com.apple.xbs/Sources/python3/python3-133.100.1.1/altgraph-0.17.2-py2.py3-none-any.whl
 asgiref==3.6.0
 distlib==0.3.6
 Django==3.2
 django-cors-headers==3.14.0
 django-filter==22.1
 django-rest-durin==1.1.0
-djangorestframework==3.12
+djangorestframework==3.12.0
 djangorestframework-datatables==0.7.0
 djangorestframework-link-header-pagination==0.1.1
 filelock==3.8.2
-# future @ file:///System/Volumes/Data/SWE/Apps/DT/BuildRoots/BuildRoot7/ActiveBuildRoot/Library/Caches/com.apple.xbs/Sources/python3/python3-133.100.1.1/future-0.18.2-py3-none-any.whl
 humanize==4.6.0
-# macholib @ file:///System/Volumes/Data/SWE/Apps/DT/BuildRoots/BuildRoot7/ActiveBuildRoot/Library/Caches/com.apple.xbs/Sources/python3/python3-133.100.1.1/macholib-1.15.2-py2.py3-none-any.whl
+pillow==10.3.0
 platformdirs==2.6.0
 psycopg2-binary==2.9.5
+pypng==0.20220715.0
 pytz==2022.7.1
-# six @ file:///System/Volumes/Data/SWE/Apps/DT/BuildRoots/BuildRoot7/ActiveBuildRoot/Library/Caches/com.apple.xbs/Sources/python3/python3-133.100.1.1/six-1.15.0-py2.py3-none-any.whl
+qrcode==7.4.2
 sqlparse==0.4.3
+typing_extensions==4.12.2
 virtualenv==20.17.1

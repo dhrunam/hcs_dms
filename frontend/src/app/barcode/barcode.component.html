@@ -6,27 +6,34 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-8">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="caseType">Case Type</label>
                         <select  class="form-select" id="caseType" name="caseType" ngModel>
                             <option value="" disabled selected>--Select Case Type--</option>
                             <option  [ngValue]='c.caseTypeId' *ngFor="let c of caseTypeData"> {{c.caseTypeName}}</option>
                         </select>
-                    </div>
+                    </div> -->
 
 
                     <div class="form-group">
                         <label class="form-label" for="caseType">Case Type</label>
                         <select  class="form-select" id="caseType" name="caseType" ngModel>
                             <option value="" disabled selected>--Select Case Type--</option>
-                            <option  [value]='c.caseTypeId' *ngFor="let c of caseTypeData"> {{c.caseTypeName}}</option>
+                            <option [value]='c.case_type' *ngFor="let c of caseTypeData"> {{c.type_name}}</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Case Number</label>
-                        <input type="text" required minLength="1" maxLength="3" pattern="\d{1,3}" ngModel name="case_number" class="form-control" >
-                        <!-- <small class="text-danger" *ngIf="case_number.touched && case_number.invalid">Please enter a valid case number</small> -->
+                        <input type="text" required minLength="1" maxLength="3" pattern="\d{1,3}" ngModel name="caseNumber" class="form-control"
+                            #case_number="ngModel">
+                        <small class="text-danger" *ngIf="case_number.touched && case_number.invalid">Please enter a valid case number</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Case Year</label>
+                            <input type="text" required minLength="1" maxLength="4" pattern="[0-9]{4}" ngModel name="caseYear"
+                                #case_year="ngModel" class="form-control">
+                            <small class="text-danger" *ngIf="case_year.touched && case_year.invalid">Please enter case year</small>
                     </div>
                     <!-- <div class="form-group">
                         <label class="form-label">Year</label>

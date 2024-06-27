@@ -1,16 +1,14 @@
 export class CaseType{
-  caseTypeId:number;
-  caseTypeName:string;
+  case_type: number;
+  type_name: string;
   
   constructor(caseTypeId:number, caseTypeName:string){
-    this.caseTypeId=caseTypeId;
-    this.caseTypeName=caseTypeName;
+    this.case_type = caseTypeId;
+    this.type_name = caseTypeName;
   }
-  
-    
 }
 
 export interface CaseTypeResponse{
-      caseTypeId:number;
-  caseTypeName:string;
+  case_type: number;
+  type_name: string;
 }
